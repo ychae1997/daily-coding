@@ -22,7 +22,7 @@ function firstCharacter(str) {
   let arr = str.split(' ');
   let result = ''
   for(el of arr) {
-    result += el[0];
+    result += el[0]; // 각 요소의 첫글자
   }
   return result
 }
