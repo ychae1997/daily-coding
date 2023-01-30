@@ -49,6 +49,7 @@ function powerOfTwoRef(num) {
     powered = powered * 2;
   }
 
+  // 굳이 if else를 쓰지 않고 바로 리턴해도 됨
   return powered === num;
 }
 
