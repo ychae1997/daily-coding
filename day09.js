@@ -44,7 +44,8 @@ function ABCheckRef(str) {
 
   str = str.toLowerCase();
 
-  for (let i = 4; i < str.length; i++) {
+  for (let i = 4; i < str.length; i++) { // 5번쨰 글자부터 시작
+    // if를 두 개 쓰지 않고 || 연산자 사용
     if (
       (str[i] === 'a' && str[i - 4] === 'b') ||
       (str[i] === 'b' && str[i - 4] === 'a')
