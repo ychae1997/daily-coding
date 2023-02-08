@@ -24,20 +24,21 @@ string 타입을 리턴해야 합니다.
 function decryptCaesarCipher(str, secret) {
   // TODO: 여기에 코드를 작성합니다.
   let decode = 'abcdefghijklmnopqrstuvwxyz';
-  let strIdx = [];
   let result = '';
   
   for(let i = 0; i < str.length; i++) {
-    strIdx.push(decode.indexOf(str[i]));
-  }
-  // 배열에 입력받은 암호(str) index를 넣음
+    let idx = decode.indexOf(str[i]);
 
-  strIdx.map((el, idx) => {
-    if(el === -1) result += str[idx]
+    if(idx === -1) result += str[i];
     // 알파벳이 아닐 때 입력받은 문자 자체를 넣음 
-    else result += decode.slice(el - secret, el - secret + 1);
-    // el - secret이 음수일 땐 뒤에서부터 slice 함
-  });
+    else {
+      let begin = idx - secret
+      if(begin ===  - 1) result += decode.slice(begin);
+      // edgeCase: z가 안나옴 -> decode의 마지막요소 슬라이스 or 그냥 result에 z넣어도 됨
+      else result += decode.slice(begin, begin + 1) 
+    }; 
+    // idx - secret이 음수일 땐 뒤에서부터 slice 함
+  }
 
   return result
 }
@@ -70,4 +71,6 @@ let output = decryptCaesarCipher('nzop delepd dfaazced jzf', 11);
 console.log(output); // --> hello
 
 output = decryptCaesarCipher('zruog', 3);
+console.log(output); // --> world
+output = decryptCaesarCipher('b', 2);
 console.log(output); // --> world
